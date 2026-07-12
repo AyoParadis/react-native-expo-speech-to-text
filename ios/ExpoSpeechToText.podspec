@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.license = package["license"]
   s.author = package["author"]
   s.homepage = package["homepage"]
-  s.source = { git: "https://github.com/AyoCodess/react-native-expo-speech-to-text.git", tag: s.version.to_s }
+  s.source = { git: "https://github.com/AyoParadis/react-native-expo-speech-to-text.git", tag: s.version.to_s }
   s.platforms = {
     :ios => "16.4"
   }
