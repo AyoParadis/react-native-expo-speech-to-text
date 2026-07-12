@@ -1,0 +1,24 @@
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+
+group = 'expo.modules.speechtotext'
+version = '1.0.0'
+
+android {
+  namespace "expo.modules.speechtotext"
+  defaultConfig {
+    minSdkVersion 26
+    versionCode 1
+    versionName "1.0.0"
+  }
+}
+
+dependencies {
+  implementation "androidx.core:core-ktx:1.17.0"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2"
+  implementation "com.google.mlkit:genai-proofreading:1.0.0-beta1"
+  testImplementation "junit:junit:4.13.2"
+}

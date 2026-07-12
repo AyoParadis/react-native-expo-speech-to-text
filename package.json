@@ -1,0 +1,71 @@
+{
+  "name": "react-native-expo-speech-to-text",
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.10.0",
+  "description": "Private, on-device speech-to-text for Expo on iOS and Android.",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "android/build.gradle",
+    "android/src/main/AndroidManifest.xml",
+    "android/src/main/java",
+    "ios",
+    "build",
+    "app.plugin.js",
+    "expo-module.config.json",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node internal/module_scripts/build.js",
+    "clean": "node internal/module_scripts/clean.js",
+    "lint": "eslint src/",
+    "test": "vitest run",
+    "test:ios": "swiftc ios/SpeechToTextTranscriptAccumulator.swift tests/ios/SpeechToTextTranscriptAccumulatorTests.swift -o /tmp/react-native-expo-speech-to-text-ios-tests && /tmp/react-native-expo-speech-to-text-ios-tests",
+    "prepare": "node internal/module_scripts/prepare.js",
+    "prepublishOnly": "pnpm test && pnpm test:ios && pnpm lint"
+  },
+  "keywords": [
+    "android",
+    "dictation",
+    "expo",
+    "ios",
+    "on-device",
+    "react-native",
+    "speech-recognition",
+    "speech-to-text",
+    "transcription"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AyoCodess/react-native-expo-speech-to-text.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AyoCodess/react-native-expo-speech-to-text/issues"
+  },
+  "author": "Paradis Code <ayo.daniel.adesanya@gmail.com> (https://www.npmjs.com/~paradis-code)",
+  "license": "MIT",
+  "homepage": "https://github.com/AyoCodess/react-native-expo-speech-to-text#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "eslint": "~9.39.4",
+    "eslint-config-universe": "^15.0.3",
+    "expo": "~57.0.4",
+    "react": "19.2.3",
+    "react-native": "0.86.0",
+    "typescript": "^5.9.2",
+    "vitest": "^4.1.10"
+  },
+  "peerDependencies": {
+    "expo": ">=57.0.0",
+    "react": "*",
+    "react-native": "*"
+  }
+}
