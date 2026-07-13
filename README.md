@@ -110,3 +110,19 @@ Key state is `available`, `ready`, `listening`, `stopping`, `transcript`, `rawTr
 - Native iOS and Android only: no web and no Expo Go.
 
 MIT © Paradis Code
+
+## Support this project
+
+If this package helps you, support its ongoing iOS and Android maintenance:
+
+<p align="center">
+  <a href="https://www.buymeacoffee.com/Ayocodes">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="42">
+  </a>
+  <a href="https://www.paypal.com/donate/?business=VCJPM8B8JADKU&amp;currency_code=USD">
+    <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal" height="42">
+  </a>
+  <a href="https://github.com/sponsors/AyoCodess?o=esb">
+    <img src="https://img.shields.io/badge/Sponsor_on_GitHub-EA4AAA?style=for-the-badge&amp;logo=githubsponsors&amp;logoColor=white" alt="Sponsor on GitHub" height="42">
+  </a>
+</p>
