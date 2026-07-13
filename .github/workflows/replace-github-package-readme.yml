@@ -1,0 +1,60 @@
+name: Replace GitHub Package README
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: replace-github-package-1.0.1
+  cancel-in-progress: false
+
+jobs:
+  replace:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.10.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://npm.pkg.github.com
+          scope: "@ayoparadis"
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm test
+      - run: pnpm test:ios
+      - run: pnpm lint
+      - name: Configure GitHub Packages identity
+        run: >-
+          npm pkg set
+          name="@ayoparadis/react-native-expo-speech-to-text"
+          publishConfig.registry="https://npm.pkg.github.com"
+          publishConfig.access="public"
+      - name: Replace version 1.0.1
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          version_id="$(gh api --paginate \
+            /users/AyoParadis/packages/npm/react-native-expo-speech-to-text/versions \
+            --jq '.[] | select(.name == "1.0.1") | .id')"
+          test -n "$version_id"
+
+          restore_previous_version() {
+            gh api --method POST \
+              "/users/AyoParadis/packages/npm/react-native-expo-speech-to-text/versions/$version_id/restore" \
+              || true
+          }
+          trap restore_previous_version ERR
+
+          gh api --method DELETE \
+            "/users/AyoParadis/packages/npm/react-native-expo-speech-to-text/versions/$version_id"
+          npm publish --ignore-scripts --access public
+
+          trap - ERR
