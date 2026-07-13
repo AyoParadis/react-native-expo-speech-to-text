@@ -1,9 +1,5 @@
 # Changelog
 
-## 1.0.2 — 2026-07-13
-
-- Added a compact, looping Swooni demonstration to the package README.
-
 ## 1.0.1 — 2026-07-13
 
 - Fixed iOS continuous dictation replacing earlier text after a pause.

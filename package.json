@@ -1,6 +1,6 @@
 {
   "name": "react-native-expo-speech-to-text",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "packageManager": "pnpm@10.10.0",
   "description": "Private, on-device speech-to-text for Expo on iOS and Android.",
   "main": "build/index.js",
