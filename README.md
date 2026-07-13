@@ -2,6 +2,14 @@
 
 Private, on-device speech-to-text for Expo on iOS and Android.
 
+## See it in action
+
+<p align="center">
+  <a href="https://raw.githubusercontent.com/AyoParadis/react-native-expo-speech-to-text/main/docs/assets/suni-speech-to-text-demo.mp4">
+    <img src="https://raw.githubusercontent.com/AyoParadis/react-native-expo-speech-to-text/main/docs/assets/suni-speech-to-text-demo.gif" alt="Suni app demonstration of live on-device speech-to-text transcription" width="260">
+  </a>
+</p>
+
 ## Install with AI
 
 Copy this prompt into your AI:
