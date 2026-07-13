@@ -73,6 +73,55 @@ export function DictationButton() {
 }
 ```
 
+## Create example
+
+Use this production-style voice-input screen to test recognition, locale switching, partial results, and transcript reset in one place.
+
+<p align="center">
+  <a href="https://raw.githubusercontent.com/AyoParadis/react-native-expo-speech-to-text/main/docs/assets/voice-input-example.png">
+    <img src="https://raw.githubusercontent.com/AyoParadis/react-native-expo-speech-to-text/main/docs/assets/voice-input-example.png" alt="Voice Input example screen with language search and speech recognition controls" width="360">
+  </a>
+</p>
+
+<details>
+<summary><strong>Copy this prompt into Codex</strong></summary>
+
+```text
+Build a working Voice Input example screen in this Expo React Native app using react-native-expo-speech-to-text.
+
+Use this screenshot as the visual source of truth:
+https://raw.githubusercontent.com/AyoParadis/react-native-expo-speech-to-text/main/docs/assets/voice-input-example.png
+
+Preserve the app's existing architecture, routing, package manager, and config. If needed, install react-native-expo-speech-to-text with npx expo install, add its config plugin without replacing existing plugins, and add clear microphone and speech-recognition permission messages. Install expo-localization only if the app has no reliable way to read the device locale.
+
+Create a self-contained VoiceInputExample screen and make it easy to open from the existing app. Recreate the screenshot closely with responsive React Native primitives and Expo icons—do not depend on any private Swooni components or assets.
+
+Visual requirements:
+- Deep navy page background (#0D043F) behind a large white surface with rounded top corners and a centered gray grab handle.
+- Purple "Voice Input" heading, generous whitespace, soft shadows, large rounded corners, and no outline borders on cards or buttons.
+- A white test card with a circular speaker icon, "Test it!", the selected locale name, and a status pill.
+- A pale lavender transcript panel that initially says "Tap record and say a short phrase."
+- A wide lavender microphone button labeled "Test this language" plus a separate disabled/enabled clear button.
+- A white rounded language-search field.
+- Pale lavender language rows with selection indicators and chevrons. Put "Use device language" first, then alphabetize supported locales.
+- Match the screenshot's purple, navy, lavender, white, and muted-gray hierarchy. Keep every touch target at least 48 points and make the layout work on iOS and Android.
+
+Functional requirements:
+- Use useSpeechToText with the selected BCP-47 locale, SpeechToTextMode.Single, and partial results enabled.
+- Request permission only after the user taps the microphone button. Start listening when idle and stop when listening.
+- Drive the status pill from real state: Ready, Listening, Finishing, Unavailable, or Error.
+- Render live/final transcript text in the transcript panel. Keep the placeholder only while it is empty.
+- Clear with resetTranscript(); disable the clear button while empty or stopping.
+- Load locales with getSupportedLocales(), turn locale tags into readable language/region labels, support search, and update recognition when a row is selected.
+- Default to the device locale when supported, with a safe en-US fallback.
+- Show lastError accessibly without breaking the layout and prevent duplicate start/stop taps.
+- Include loading, unavailable, denied-permission, and empty-locale states.
+
+Use a native development build—this module does not work in Expo Go. Run the smallest relevant TypeScript/lint checks and explain exactly what you changed, how to open the screen, and how to test it on both iOS and Android.
+```
+
+</details>
+
 ## API
 
 `useSpeechToText(options)` returns live native state plus these actions:
