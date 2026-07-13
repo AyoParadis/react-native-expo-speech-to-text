@@ -2,11 +2,6 @@ import AVFoundation
 import Foundation
 import Speech
 
-enum SpeechToTextMode: String {
-  case single
-  case continuous
-}
-
 struct SpeechToTextStartOptions {
   let locale: String
   let mode: SpeechToTextMode
@@ -513,23 +508,20 @@ final class SpeechToTextController: NSObject, SFSpeechRecognizerDelegate {
         if isStopRequested {
           finishStopProcessing()
         } else {
-          do {
-            try beginRecognitionCycle()
-          } catch let speechToTextError as SpeechToTextError {
-            tearDownRecognitionSession(setListening: true)
-            delegate?.speechToTextControllerDidFail(speechToTextError)
-          } catch {
-            tearDownRecognitionSession(setListening: true)
-            delegate?.speechToTextControllerDidFail(
-              .recordingStartFailed(message: error.localizedDescription)
-            )
-          }
+          restartRecognitionCycle()
         }
       }
       return
     }
 
-    scheduleFinalizationTimer()
+    switch SpeechToTextRecognitionLifecyclePolicy.actionAfterNonFinalResult(
+      stopRequested: isStopRequested || stopping
+    ) {
+    case .scheduleSilenceTimeout:
+      scheduleRecognitionSilenceTimer()
+    case .preserveStopWatchdog:
+      break
+    }
   }
 
   private func handleRecognitionFailure(_ error: Error) {
@@ -603,21 +595,48 @@ final class SpeechToTextController: NSObject, SFSpeechRecognizerDelegate {
     }
   }
 
-  private func scheduleFinalizationTimer() {
+  private func scheduleRecognitionSilenceTimer() {
     cancelTimer()
-
-    if currentOptions.mode == .continuous {
-      return
-    }
-
     finalizationTimer = Timer.scheduledTimer(
       withTimeInterval: currentOptions.silenceTimeoutMs / 1000,
       repeats: false
     ) { [weak self] _ in
-      guard let self else { return }
-      self.commitPendingSegment(emitPreview: false)
-      self.finalizeSessionTranscript()
-      self.tearDownRecognitionSession(setListening: true)
+      self?.handleRecognitionSilenceTimeout()
+    }
+  }
+
+  private func handleRecognitionSilenceTimeout() {
+    switch SpeechToTextRecognitionLifecyclePolicy.actionAfterSilence(
+      mode: currentOptions.mode,
+      stopRequested: isStopRequested || stopping
+    ) {
+    case .commitPendingAndFinalize:
+      commitPendingSegment(emitPreview: false)
+      finalizeSessionTranscript()
+      tearDownRecognitionSession(setListening: true)
+    case .commitPendingAndRestart:
+      commitPendingSegment(emitPreview: true)
+      restartRecognitionCycle()
+    case .none:
+      break
+    }
+  }
+
+  private func restartRecognitionCycle() {
+    guard !isStopRequested, !stopping else {
+      return
+    }
+
+    do {
+      try beginRecognitionCycle()
+    } catch let speechToTextError as SpeechToTextError {
+      tearDownRecognitionSession(setListening: true)
+      delegate?.speechToTextControllerDidFail(speechToTextError)
+    } catch {
+      tearDownRecognitionSession(setListening: true)
+      delegate?.speechToTextControllerDidFail(
+        .recordingStartFailed(message: error.localizedDescription)
+      )
     }
   }
 

@@ -142,7 +142,7 @@ Options:
 | --- | --- | --- |
 | `locale` | `en-US` | BCP-47 recognition locale. |
 | `mode` | `Single` | `Single` stops after one utterance; `Continuous` restarts until stopped. |
-| `silenceTimeoutMs` | `1000` | Finalization delay in single mode. |
+| `silenceTimeoutMs` | `1000` | iOS pause boundary: `Single` stops; `Continuous` appends and continues. Android uses recognizer timing. |
 | `enablePartialResults` | `false` | Emit live, non-final transcript previews. |
 | `enableCleanup` | `true` | Prefer optional on-device proofreading; raw text remains the fallback. |
 | `cleanupStyle` | `Dictation` | Cleanup hint: `Dictation`, `Note`, or `Message`. |

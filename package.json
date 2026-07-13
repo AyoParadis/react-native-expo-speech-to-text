@@ -1,6 +1,6 @@
 {
   "name": "react-native-expo-speech-to-text",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "packageManager": "pnpm@10.10.0",
   "description": "Private, on-device speech-to-text for Expo on iOS and Android.",
   "main": "build/index.js",
@@ -22,7 +22,7 @@
     "clean": "node internal/module_scripts/clean.js",
     "lint": "eslint src/",
     "test": "vitest run",
-    "test:ios": "swiftc ios/SpeechToTextTranscriptAccumulator.swift tests/ios/SpeechToTextTranscriptAccumulatorTests.swift -o /tmp/react-native-expo-speech-to-text-ios-tests && /tmp/react-native-expo-speech-to-text-ios-tests",
+    "test:ios": "swiftc ios/SpeechToTextTranscriptAccumulator.swift ios/SpeechToTextRecognitionLifecyclePolicy.swift tests/ios/SpeechToTextTranscriptAccumulatorTests.swift -o /tmp/react-native-expo-speech-to-text-ios-tests && /tmp/react-native-expo-speech-to-text-ios-tests",
     "prepare": "node internal/module_scripts/prepare.js",
     "prepublishOnly": "pnpm test && pnpm test:ios && pnpm lint"
   },
