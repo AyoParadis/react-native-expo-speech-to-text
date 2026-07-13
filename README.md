@@ -111,18 +111,31 @@ Key state is `available`, `ready`, `listening`, `stopping`, `transcript`, `rawTr
 
 MIT © Paradis Code
 
-## Support this project
+---
 
-If this package helps you, support its ongoing iOS and Android maintenance:
+<h2 align="center">💛 Support this project</h2>
 
 <p align="center">
-  <a href="https://www.buymeacoffee.com/Ayocodes">
-    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="42">
-  </a>
-  <a href="https://www.paypal.com/donate/?business=VCJPM8B8JADKU&amp;currency_code=USD">
-    <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal" height="42">
-  </a>
-  <a href="https://github.com/sponsors/AyoCodess?o=esb">
-    <img src="https://img.shields.io/badge/Sponsor_on_GitHub-EA4AAA?style=for-the-badge&amp;logo=githubsponsors&amp;logoColor=white" alt="Sponsor on GitHub" height="42">
-  </a>
+  <strong>Help keep this package reliable and up to date across Expo, iOS, and Android.</strong><br>
+  <sub>Your support funds ongoing platform compatibility, maintenance, and developer documentation.</sub>
 </p>
+
+<table align="center" width="100%">
+  <tr>
+    <td align="center" width="33%">
+      <a href="https://www.buymeacoffee.com/Ayocodes">
+        <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="56">
+      </a>
+    </td>
+    <td align="center" width="33%">
+      <a href="https://www.paypal.com/donate/?business=VCJPM8B8JADKU&amp;currency_code=USD">
+        <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal" height="56">
+      </a>
+    </td>
+    <td align="center" width="33%">
+      <a href="https://github.com/sponsors/AyoCodess?o=esb">
+        <img src="https://img.shields.io/badge/Sponsor_on_GitHub-EA4AAA?style=for-the-badge&amp;logo=githubsponsors&amp;logoColor=white" alt="Sponsor on GitHub" height="56">
+      </a>
+    </td>
+  </tr>
+</table>
