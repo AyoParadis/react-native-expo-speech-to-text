@@ -4,7 +4,7 @@ Private, on-device speech-to-text for Expo on iOS and Android.
 
 ## Install with AI
 
-Paste this into Codex or your coding agent:
+Copy this prompt into your AI:
 
 ```text
 Install react-native-expo-speech-to-text in this Expo React Native app. Preserve the existing app config. Add the package's config plugin with clear microphone and speech-recognition permission messages, then create a minimal useSpeechToText integration that requests permission only after a user tap, starts/stops dictation, renders transcript, and handles stopping and lastError. Use the project's package manager and Expo commands. This is a native module: do not use Expo Go; rebuild the development client for iOS and Android. Tell me exactly what you changed and which verification commands you ran.
@@ -79,12 +79,12 @@ Use this production-style voice-input screen to test recognition, locale switchi
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/AyoParadis/react-native-expo-speech-to-text/main/docs/assets/voice-input-example.png">
-    <img src="https://raw.githubusercontent.com/AyoParadis/react-native-expo-speech-to-text/main/docs/assets/voice-input-example.png" alt="Voice Input example screen with language search and speech recognition controls" width="360">
+    <img src="https://raw.githubusercontent.com/AyoParadis/react-native-expo-speech-to-text/main/docs/assets/voice-input-example.png" alt="Voice Input example screen with language search and speech recognition controls" width="280">
   </a>
 </p>
 
 <details>
-<summary><strong>Copy this prompt into Codex</strong></summary>
+<summary><strong>Copy this prompt into your AI</strong></summary>
 
 ```text
 Build a working Voice Input example screen in this Expo React Native app using react-native-expo-speech-to-text.
